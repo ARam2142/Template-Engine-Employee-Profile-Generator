@@ -6,8 +6,6 @@ so that I have quick access to emails and GitHub profiles
 
 
 
-
-
 In the Develop folder, there is a package.json, so make sure to npm install.
 The dependencies are, jest for running the provided tests, and inquirer for collecting input from the user.
 There are also unit tests to help you build the classes necessary.

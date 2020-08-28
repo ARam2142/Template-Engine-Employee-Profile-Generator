@@ -3,10 +3,12 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+//npm installs
 const inquirer = require("inquirer");//questions for the inquirer
 const path = require("path");
 const fs = require("fs");//fs to writefile to  html
 
+//output paths
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -15,9 +17,34 @@ const render = require("./lib/htmlRenderer");
 //array contains all employee objects
 const teamArray = [];
 
+const createTeam = () => {
+    inquirer.prompt([
+    {
+        type: "checkbox",
+        name: "teammembers",
+        message: 'what team members would you like to add?',
+        choices: ["Manager", "Engineer","Intern"]
+    },
+    ]).then(choice => {
+        switch (choice.teamMember) {
+            case 'Manager':
+                createManager();
+                break;
+            case 'Engineer':
+                createEngineer();
+                break;
+            case 'Intern':
+                createIntern();
+                break;
+            default:
+            buildTeam();
+        }
+    })
+}
+
 //have user input answers to manager
-createManager();
-function createManager() {
+const createManager = () => {
+    console.log("You must create a team")
     inquirer.prompt([
         {
             type: "input",
@@ -44,11 +71,11 @@ function createManager() {
         //works cited:https://github.com/JenGamez/Template-Engine-Employee-Summary/blob/master/app.js
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber);
         teamArray.push(manager);
-        createEngineer();
-    })
+        createTeam();
+    }).then(createEngineer)
 }
 
-function createEngineer() {
+const createEngineer = () => {
     inquirer.prompt([
         {
             type: "input",
@@ -73,11 +100,11 @@ function createEngineer() {
     ]).then(answers => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamArray.push(engineer);
-        createIntern();
-    })
+        createTeam();
+    }).then(createIntern)
 }
 
-function createIntern() {
+const createIntern = () => {
     inquirer.prompt([
         {
             type: "input",
@@ -102,34 +129,25 @@ function createIntern() {
     ]).then(answers => {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         teamArray.push(intern);
+        createTeam();
     })
 }   
-/*
-function addMoreMembers() {
-    inquirer.prompt([
-        {
-            type: "input",
-            name: "Employees",
-            message: 'Would you like to add more employees?',
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "what is the intern's id?",
-        },
-    ]).then(answers => {
 
-    })
+const buildTeam = () => {
+    fs.writeFile(outputPath, render, function(err) {
+        if (err) {
+            throw err;
+        }
+    });
 }
-*/
 
 
-
-
-
+    
+    
+    
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-
+    
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!

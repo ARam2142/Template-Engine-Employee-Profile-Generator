@@ -1,0 +1,24 @@
+{
+  "name": "employee-summary",
+  "version": "1.0.0",
+  "description": "As a manager I want to generate a webpage that displays my team's basic info so that I have quick access to emails and GitHub profiles",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARam2142/Employee-Summary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ARam2142/Employee-Summary/issues"
+  },
+  "homepage": "https://github.com/ARam2142/Employee-Summary#readme"
+}

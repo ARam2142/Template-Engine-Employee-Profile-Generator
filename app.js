@@ -4,6 +4,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
 //npm installs
+const open = require('open');
 const inquirer = require("inquirer");//questions for the inquirer
 const path = require("path");
 const fs = require("fs");//fs to writefile to  html
@@ -18,14 +19,27 @@ const render = require("./lib/htmlRenderer");
 const teamArray = [];
 
 const createTeam = () => {
+    const choices = ["Manager", "Engineer","Intern"]
+    if(teamArray.length > 0){
+        choices.push('End');
+    }
     inquirer.prompt([
     {
-        type: "checkbox",
-        name: "teammembers",
+        type: "list",
+        name: "teamMember",
         message: 'what team members would you like to add?',
-        choices: ["Manager", "Engineer","Intern"]
+        choices
     },
     ]).then(choice => {
+        console.log(choice)
+        if(choice.teamMember === 'End'){
+            //Build html here
+            console.log('BUild html')
+            console.log(teamArray)
+            buildTeam();
+            return;
+
+        }
         switch (choice.teamMember) {
             case 'Manager':
                 createManager();
@@ -37,9 +51,10 @@ const createTeam = () => {
                 createIntern();
                 break;
             default:
-            buildTeam();
+                throw new Error('This should never happen dropdown did not give proper response')
         }
     })
+    .catch(err => console.log(err))
 }
 
 //have user input answers to manager
@@ -72,7 +87,7 @@ const createManager = () => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber);
         teamArray.push(manager);
         createTeam();
-    }).then(createEngineer)
+    })
 }
 
 const createEngineer = () => {
@@ -101,7 +116,7 @@ const createEngineer = () => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamArray.push(engineer);
         createTeam();
-    }).then(createIntern)
+    })
 }
 
 const createIntern = () => {
@@ -134,12 +149,21 @@ const createIntern = () => {
 }   
 
 const buildTeam = () => {
-    fs.writeFile(outputPath, render, function(err) {
+    //You have an aray of objects
+    //YOU need to popoulate a string of html
+    const html = render(teamArray);
+    //Then write toa an thml ffile
+    fs.writeFile(outputPath, html, function(err) {
         if (err) {
             throw err;
         }
+
+        //USe npm open package to automatically open file
+        open(outputPath);
     });
 }
+
+createTeam();
 
 
     

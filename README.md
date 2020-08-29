@@ -1,4 +1,4 @@
-# Employee-Generator
+# Employee-Summary
 
 As a manager
 I want to generate a webpage that displays my team's basic info

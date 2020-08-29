@@ -19,6 +19,7 @@ const render = require("./lib/htmlRenderer");
 const teamArray = [];
 
 const createTeam = () => {
+    //works cited worked on with tutor(const choices and if statement)
     const choices = ["Manager", "Engineer","Intern"]
     if(teamArray.length > 0){
         choices.push('End');
@@ -51,6 +52,7 @@ const createTeam = () => {
                 createIntern();
                 break;
             default:
+                //worked on with tutor
                 throw new Error('This should never happen dropdown did not give proper response')
         }
     })
@@ -152,12 +154,13 @@ const buildTeam = () => {
     //You have an aray of objects
     //YOU need to popoulate a string of html
     const html = render(teamArray);
-    //Then write toa an thml ffile
+    //Then write to an html file
     fs.writeFile(outputPath, html, function(err) {
         if (err) {
             throw err;
         }
 
+        //worked on with tutuor
         //USe npm open package to automatically open file
         open(outputPath);
     });

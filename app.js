@@ -69,7 +69,7 @@ const createManager = () => {
             message: 'what is the name of your manager?',
             validate: (name) => {
                 if (name === null || name.length < 3) {
-                    console.log("your name must be longer than 3 letters")
+                    console.log(" your name must be longer than 3 letters")
                 } else {
                     return true;
                 }
@@ -79,6 +79,14 @@ const createManager = () => {
             type: "input",
             name: "id",
             message: "what is the manager's id?",
+            validate: (id) => {
+                if (id) {
+                    return true;
+                } else {
+                    console.log('you must enter a valid id');
+
+                }
+            }
         },
         {
             type: "input",
@@ -87,8 +95,7 @@ const createManager = () => {
             validate: (email)  => {
                 //works cited: https://www.codespot.org/javascript-email-validation/
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                console.log(' you must enter a valid email moron');   
-                return re.test(email.toLowerCase().trim());
+                return re.test(email.trim());
             }
         },
         {
@@ -107,7 +114,6 @@ const createManager = () => {
         },
     ]).then(answers => {
         console.log(answers);
-        //works cited:https://github.com/JenGamez/Template-Engine-Employee-Summary/blob/master/app.js
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officenumber);
         teamArray.push(manager);
         createTeam();
@@ -132,21 +138,36 @@ const createEngineer = () => {
             type: "input",
             name: "id",
             message: "what is the engineer's id?",
+            validate: (id) => {
+                if (id) {
+                    return true
+                } else {
+                    console.log('enter a valid id');
+                }
+            }
+            
         },
         {
             type: "input",
             name: "email",
             message: "what is your engineer's email",
             validate: (email)  => {
-                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                console.log(' you must enter a valid email moron');   
-                return re.test(email.toLowerCase().trim());
+                const re = /^(([^<>()\[\]\\]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+                return re.test(email);
             }
+            
         },
         {
             type: "input",
             name: "github",
             message: "what is your engineer's github username?",
+            validate: (github) => {
+                if (github === null || github.length < 5) {
+                    console.log("your github username must be longer than 5 letters")
+                } else {
+                    return true;
+                }
+            }
         },
     ]).then(answers => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
@@ -173,6 +194,13 @@ const createIntern = () => {
             type: "input",
             name: "id",
             message: "what is the intern's id?",
+            validate: (id) => {
+                if (id) {
+                    return true
+                } else {
+                    console.log('enter a valid id')
+                }
+            }  
         },
         {
             type: "input",
@@ -180,7 +208,6 @@ const createIntern = () => {
             message: "what is your intern's email",
             validate: (email)  => {
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                console.log(' you must enter a valid email moron');   
                 return re.test(email.toLowerCase().trim());
             }
         },
@@ -190,7 +217,7 @@ const createIntern = () => {
             message: "what is your intern's school?",
             validate: (name) => {
                 if (name === null || name.length < 6) {
-                    console.log("your name must be longer than 3 letters")
+                    console.log("The school must be longer than 3 letters")
                 } else {
                     return true;
                 }

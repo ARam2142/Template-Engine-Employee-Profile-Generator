@@ -188,6 +188,13 @@ const createIntern = () => {
             type: "input",
             name: "school",
             message: "what is your intern's school?",
+            validate: (name) => {
+                if (name === null || name.length < 6) {
+                    console.log("your name must be longer than 3 letters")
+                } else {
+                    return true;
+                }
+            }
         },
     ]).then(answers => {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);

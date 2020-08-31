@@ -1,0 +1,10 @@
+div.col-12.jumbotron {
+    background-color: rgba(95, 158, 241, 0.616);
+    color: white;
+}
+
+div.card-header {
+    background-color: rgb(82, 199, 228);
+    color: rgba(255, 255, 255, 0.884);
+    
+}

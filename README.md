@@ -13,6 +13,7 @@ live Demo: https://drive.google.com/file/d/1W99KWktLWTuxOo8_pOgKBEAfMFaJmeQL/vie
 2. Go to my profile and fork from my repository
 3. Then go to vs code and install npm package.JSON
 4. Install npm inquirer
+5. Run node app.js
 
 # screenshots
 
@@ -25,6 +26,10 @@ live Demo: https://drive.google.com/file/d/1W99KWktLWTuxOo8_pOgKBEAfMFaJmeQL/vie
 ![Screen Shot 2020-08-30 at 10 12 03 PM](https://user-images.githubusercontent.com/65634748/91676606-64b6ea00-eb0e-11ea-8856-fc121739d9e4.png)
 
 
+# Tests
+
+All tests passed with flying colors
+![Screen Shot 2020-08-30 at 10 31 33 PM](https://user-images.githubusercontent.com/65634748/91677450-b6607400-eb10-11ea-8544-a8ec425e0e03.png)
 
 
 # License

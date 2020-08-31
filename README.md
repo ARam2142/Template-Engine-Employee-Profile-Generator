@@ -5,6 +5,8 @@
 
 This application will dynamically create a team of engineers and interns. The user will be given a set of questions about each employee. The user will be asked the name, id , email, and role of the employee. The user will be able to pick how many people he/she wants on the team. I did have some trouble trying to figure out to display answers for the questions. I had help making this application but i would not have finished this app if I didnt recieve the given support.
 
+live Demo: https://drive.google.com/file/d/1W99KWktLWTuxOo8_pOgKBEAfMFaJmeQL/view
+
 # Installation
 
 1. Open up github
@@ -13,6 +15,17 @@ This application will dynamically create a team of engineers and interns. The us
 4. Install npm inquirer
 
 # screenshots
+
+![Screen Shot 2020-08-30 at 10 19 13 PM](https://user-images.githubusercontent.com/65634748/91676838-181fde80-eb0f-11ea-8672-85dddf6eaf8f.png)
+
+
+![Screen Shot 2020-08-30 at 10 17 42 PM](https://user-images.githubusercontent.com/65634748/91676688-a8a9ef00-eb0e-11ea-8b69-63d1bb1a821e.png)
+
+
+![Screen Shot 2020-08-30 at 10 12 03 PM](https://user-images.githubusercontent.com/65634748/91676606-64b6ea00-eb0e-11ea-8856-fc121739d9e4.png)
+
+
+
 
 # License
 

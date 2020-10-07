@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-# Employee-Tracker-System
+# Template Engine-Employee Profile Generator
 
 # Background
 
